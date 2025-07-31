@@ -3,8 +3,8 @@ services:
     name: sentiment-platform-backend
     env: python
     region: oregon
-    buildCommand: "./.render/build.sh"
-    startCommand: "gunicorn integrated_server:app -b 0.0.0.0:$PORT"
+    buildCommand: ./.render/build.sh
+    startCommand: gunicorn sentiment_backend.integrated_server:app -b 0.0.0.0:$PORT
     plan: free
     autoDeploy: true
     envVars:
@@ -22,20 +22,3 @@ services:
 
     build:
       cwd: sentiment_backend
-services:
-  - type: web
-    name: sentiment-backend
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn integrated_server:app -b 0.0.0.0:$PORT
-    plan: free
-    envVars:
-      - key: FLASK_ENV
-        value: production
-
-  - type: web
-    name: sentiment-frontend
-    env: static
-    buildCommand: cd sentiment_dashboard && npm install && npm run build
-    staticPublishPath: sentiment_dashboard/build
-    plan: free
