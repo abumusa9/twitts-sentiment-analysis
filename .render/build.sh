@@ -16,4 +16,4 @@ mv build ../sentiment_backend/src/static
 
 echo "Installing backend dependencies..."
 cd ../sentiment_backend
-pip install -r requirements.txt
+pip install -r sentiment_backend/requirements.txt
