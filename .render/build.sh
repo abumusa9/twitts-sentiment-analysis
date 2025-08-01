@@ -12,7 +12,7 @@ npm run build
 
 echo "Moving frontend build to backend static folder..."
 rm -rf ../sentiment_backend/src/static
-mv build ../sentiment_backend/src/static
+mv dist ../sentiment_backend/src/static
 
 echo "Installing backend dependencies..."
 cd ../sentiment_backend
