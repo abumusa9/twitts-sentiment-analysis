@@ -6,7 +6,6 @@ filelock==3.13.1
 Flask==3.1.1
 flask-cors==6.0.1
 fsspec==2024.6.1
-gunicorn==23.0.0
 hf-xet==1.1.5
 huggingface-hub==0.34.3
 idna==3.10
@@ -24,9 +23,9 @@ requests==2.32.4
 safetensors==0.5.3
 sympy==1.13.3
 tokenizers==0.21.4
-torch==2.7.1+cpu
-torchaudio==2.7.1+cpu
-torchvision==0.22.1+cpu
+torch==2.7.1
+torchaudio==2.7.1
+torchvision==0.22.1
 tqdm==4.67.1
 transformers==4.54.0
 typing_extensions==4.12.2
