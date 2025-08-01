@@ -1,27 +1,19 @@
 services:
   - type: web
-    name: sentiment-platform-backend
+    name: sentiment-platform
     env: python
-    region: oregon
     plan: free
+    region: oregon
     autoDeploy: true
 
-    buildCommand: ./.render/build.sh
-    startCommand: cd sentiment_backend && gunicorn integrated_server:app -b 0.0.0.0:$PORT
-
+    buildCommand: ./build.sh
+    startCommand: gunicorn sentiment_backend.integrated_server:app -b 0.0.0.0:$PORT
 
     build:
       cwd: .
-
-    buildFilter:
-      paths:
-        - sentiment_backend/**
-        - sentiment_dashboard/**
-        - .render/build.sh
-        - render.yaml
 
     envVars:
       - key: FLASK_ENV
         value: production
       - key: SECRET_KEY
-        sync: false  # Set this value securely in the Render dashboard
+        sync: false  # Set manually in Render dashboard
