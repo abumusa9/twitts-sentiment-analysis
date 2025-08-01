@@ -1,21 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Exit on error
+set -o errexit
 
-# Exit if any command fails
-set -e
-
-echo "Installing frontend dependencies..."
-cd sentiment_dashboard
-npm install
-
-echo "Building React frontend..."
-npm run build
-
-echo "Copying frontend build to Flask static folder..."
-rm -rf ../sentiment_backend/src/static
-mkdir -p ../sentiment_backend/src/static
-cp -r dist/* ../sentiment_backend/src/static/
-
-
-echo "Installing backend dependencies..."
-cd ../
+# Install Python dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
+
+# Build frontend if needed
+if [ -d "sentiment_dashboard" ]; then
+    cd sentiment_dashboard
+    npm install
+    npm run build
+    # Copy built files to Flask static directory
+    mkdir -p ../sentiment_backend/static
+    cp -r dist/* ../sentiment_backend/static/ 2>/dev/null || true
+    cd ..
+fi

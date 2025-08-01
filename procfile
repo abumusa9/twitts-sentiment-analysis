@@ -1,1 +1,1 @@
-web: gunicorn sentiment_backend.integrated_server:app --bind 0.0.0.0:$PORT
+web: cd sentiment_backend && gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120

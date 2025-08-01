@@ -5,15 +5,12 @@ services:
     plan: free
     region: oregon
     autoDeploy: true
-
     buildCommand: ./build.sh
-    startCommand: gunicorn sentiment_backend.integrated_server:app -b 0.0.0.0:$PORT
-
-    build:
-      cwd: .
-
+    startCommand: cd sentiment_backend && gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: FLASK_ENV
         value: production
+      - key: PYTHON_VERSION
+        value: 3.11.0
       - key: SECRET_KEY
-        sync: false  # Set manually in Render dashboard
+        generateValue: true
