@@ -4,7 +4,7 @@
 set -e
 
 echo "Installing frontend dependencies..."
-cd ../sentiment_dashboard
+cd sentiment_dashboard
 npm install
 
 echo "Building React app..."
