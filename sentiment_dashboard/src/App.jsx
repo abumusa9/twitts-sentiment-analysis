@@ -38,7 +38,8 @@ import {
 import './App.css'
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:5002'
+const API_BASE_URL = 'https://sentiment-analysis-platform-f1vh.onrender.com';
+
 
 // Color scheme for sentiment visualization
 const SENTIMENT_COLORS = {
