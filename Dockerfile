@@ -1,3 +1,4 @@
+# flyio_dockerfile content
 # Use a lightweight Python base image
 FROM python:3.11-slim-buster
 
@@ -21,13 +22,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of your application code
 COPY . .
 
-# Build the React frontend (assuming Node.js is available or built separately)
-# If you build frontend locally and copy it, you can skip this part in Dockerfile
-# If you want Docker to build it, you'll need a Node.js base image or multi-stage build
-# For simplicity, assume frontend is built and copied before Docker build or handled by a multi-stage build
-
 # Change to the backend source directory
 WORKDIR $APP_HOME/sentiment_backend/src
 
-# Command to run the application
-CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:$PORT"]
+# Command to run the application using Gunicorn
+CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:8080"]
