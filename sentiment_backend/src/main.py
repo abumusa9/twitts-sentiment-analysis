@@ -713,7 +713,7 @@ def request_entity_too_large(error):
         'error': 'Request too large',
         'message': 'The request payload is too large'
     }), 413
-
+application = app
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_ENV') != 'production'
@@ -722,4 +722,5 @@ if __name__ == '__main__':
     logger.info(f"Debug mode: {debug}")
     
     app.run(host='0.0.0.0', port=port, debug=debug)
-    app.run(host='0.0.0.0', port=5000, debug=True)
+
+
